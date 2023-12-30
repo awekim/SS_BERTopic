@@ -1,7 +1,3 @@
-# conda activate gpuenv
-# cd ~/shareWithContainer/ScienceFunding/
-# python ScienceFunding.py
-
 import torch
 import pandas as pd
 import re
