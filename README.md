@@ -3,4 +3,6 @@
 ##### Methods: RCA & BERTopic & LLM Prompt Enginnering
 ##### edited by KKIM
 
-- ScienceFunding.py: Python script for running BERTopic for specialized sciences
+- SS_BERTopic.py: Python script for running BERTopic for specialized sciences
+- SS_LLM_GenTopic.py: Python script for running LLM (Vicuna-13b) for naming topics
+
