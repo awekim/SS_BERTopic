@@ -1,4 +1,4 @@
-# Identification of Regional Specialized Science Fields Employing BERTopic Models
+# Identification of Regional Specialized Science Fields Employing BERTopic Model
 ##### Source: Web of Science
 ##### Methods: RCA & BERTopic & LLM Prompt Enginnering
 ##### edited by KKIM
