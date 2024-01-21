@@ -62,7 +62,7 @@ for file_name in files:
     dat = dat.reset_index()
     dat['GenTopic'] = "" 
 
-    prompt = " Those are the outcomes of the science publication topic modelling. Generate a new science topic that summarizes them."
+    prompt = """.\n List of words above are the outcome of the science publication topic modelling. Generate a new science topic that summarizes them."""
 
     for i in dat.index:
         dat['GenTopic'][i] = gen(dat['Representation'][i]+prompt, 300)
