@@ -1,7 +1,7 @@
 ### Part 3-2. Toppic Identification
 # conda activate gpuenv
 # cd ~/shareWithContainer/SpecializedScience_BERTopic/
-# python SS_LLM_GenTopic.py
+# python SS_LLM_GenTopic_gpuenv.py
 
 ### import packages
 import torch
@@ -12,7 +12,7 @@ import math
 import glob
 import time
 import transformers
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import AutoTokenizer, AutoModelForCausalLM, LlamaForCausalLM
 from huggingface_hub import login
 
 ### 
@@ -25,7 +25,7 @@ model = LlamaForCausalLM.from_pretrained("D:/LLM/vicuna-13b-v1.5",
 model.to(device)
 
 ### Get list of files
-files = glob.glob('result/freq_*.csv')
+files = glob.glob('SS_BERTopic_results/freq_*.csv')
 
 ### Iterative statments for generating "GenTopic"
 for file_name in files:
@@ -40,7 +40,7 @@ for file_name in files:
     dat = dat.reset_index()
     dat['GenTopic'] = "" 
 
-    prompt = """.\n List of words above are the outcome of the science publication topic modelling. Generate a new science topic that summarizes them."""
+    prompt = """.\n List of words above are the outcome of the science publication topic modelling. Generate a new science topic that summarizes them as follow:\n topic: <new science topic>"""
 
     for i in dat.index:
         inputs = tokenizer(dat['Representation'][i]+prompt, return_tensors='pt')
@@ -51,4 +51,5 @@ for file_name in files:
         dat['GenTopic'][i] = dat['GenTopic'][i].replace(dat['Representation'][i], "")
         dat['GenTopic'][i] = dat['GenTopic'][i].replace(prompt, "")
             
-    dat.to_csv("result/freq_"+reg_name+"_gentopic.csv")
+    dat.to_csv("SS_BERTopic_results/freq_"+reg_name+"_gentopic.csv")
+
